@@ -41,7 +41,8 @@ function* setResults(action) {
     const results = response.data.map((gif) => ({
        
             title: gif.title,
-            url: gif.url
+            url: gif.images.fixed_width.url
+
         
     }))
     yield put({ type: "SET_RESULTS", payload: results });

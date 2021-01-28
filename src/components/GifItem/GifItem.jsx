@@ -3,16 +3,18 @@ import './GifItem.css'
 
 
 function GifItem({gif}) {
+    const dispatch = useDispatch();
     console.log(gif)
 
-    const currentPage = 'FavoritesView';
-    // const currentPage = 'SearchView'
+    const addFavorite = () => {
+        dispatch({type: 'NEW_FAVORITE', payload: gif})
+    }
 
     return (
 
         <div className="gif-item">
-            <img className="gif" src={gif.url} alt=""/>
-            <button>Favorite</button>
+            <img className="gif" src={gif.url} alt={gif.title}/>
+            <button onClick={addFavorite}>Favorite</button>
             {/* TODO: make select a controlled input */}
             <select name="" id="">
                 <option value={null} >Select a category</option>

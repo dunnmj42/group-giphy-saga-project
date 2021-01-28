@@ -1,8 +1,13 @@
+import GifList from '../GifList/GifList'
 
 const FavoritesView = () => {
 
     return (
-        <h1>FAVORITES VIEW</h1>
+        <div>
+            <h1>FAVORITES VIEW</h1>
+            <GifList />
+        </div>
+
     )
 }
 

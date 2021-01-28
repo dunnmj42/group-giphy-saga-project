@@ -25,10 +25,11 @@ const dummyGifs = [
 
 function GifList() {
 
+    const gifArray = useSelector(store => store.resultsList)
 
     return (
         <div className="container">
-            {dummyGifs.map((gif) => {
+            {gifArray.map((gif) => {
                 return (<GifItem
                             key={gif.id}
                             gif={gif}
