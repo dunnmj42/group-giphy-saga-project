@@ -31,6 +31,7 @@ function* rootSaga() {
   yield takeEvery("SEARCH", setResults);
   yield takeEvery("NEW_FAVORITE", setFavorite);
   yield takeEvery("FETCH_FAVORITES", fetchFavorites);
+  yield takeEvery("SET_CAT", setCategory)
 }
 
 function* setResults(action) {
@@ -66,6 +67,16 @@ function* fetchFavorites() {
   } catch (error) {
     console.error(error);
   }
+};
+
+function* setCategory(action) {
+    try {
+        let id = action.payload.id
+        yield axios.put(`/api/favorite/${id}`, action.payload);
+        // yield put({ type: "FETCH_FAVORITES", payload: response.data });
+    } catch (error) {
+        console.error(error);
+    }
 };
 
 const sagaMiddleware = createSagaMiddleware();

@@ -10,13 +10,18 @@ function GifItem({gif}) {
         dispatch({type: 'NEW_FAVORITE', payload: gif})
     }
 
+    const selectCat = (event) => {
+        console.log(event.target.value)
+        dispatch({type: 'SET_CAT', payload: {...gif, cat_id: event.target.value}})
+    }
+
     return (
 
         <div className="gif-item">
             <img className="gif" src={gif.url} alt={gif.title}/>
             <button onClick={addFavorite}>Favorite</button>
             {/* TODO: make select a controlled input */}
-            <select name="" id="">
+            <select name="" id="" onChange={selectCat}>
                 <option value={null} >Select a category</option>
                 <option value="1">Funny</option>
                 <option value="2">Cohort</option>
