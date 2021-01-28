@@ -15,8 +15,8 @@ See the `database.sql` file for database setup and details. It offers some of th
 
 ## Development Setup Instructions
 
-* Run `npm install`
-* Start postgres if not running already by using `brew services start postgresql`
+* [x]Run `npm install`
+* [x]Start postgres if not running already by using `brew services start postgresql`
 * Run `npm run server` to start the server
 * Run `npm run client` to start the client
 * Navigate to `localhost:3000`
