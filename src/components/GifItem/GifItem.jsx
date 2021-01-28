@@ -2,7 +2,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import './GifItem.css'
 
 
-function GifItem({gif}) {
+function GifItem({gif, favorites}) {
     const dispatch = useDispatch();
     console.log(gif)
 
@@ -19,9 +19,8 @@ function GifItem({gif}) {
 
         <div className="gif-item">
             <img className="gif" src={gif.url} alt={gif.title}/>
-            <button onClick={addFavorite}>Favorite</button>
-            {/* TODO: make select a controlled input */}
-            <select name="" id="" onChange={selectCat}>
+            {favorites ? (
+                <select name="" id="" onChange={selectCat}>
                 <option value={null} >Select a category</option>
                 <option value="1">Funny</option>
                 <option value="2">Cohort</option>
@@ -29,6 +28,18 @@ function GifItem({gif}) {
                 <option value="4">NSFW</option>
                 <option value="5">Meme</option>
             </select>
+            ) : (
+                <button onClick={addFavorite}>Favorite</button>
+            )}
+            {/* <button onClick={addFavorite}>Favorite</button>
+            <select name="" id="" onChange={selectCat}>
+                <option value={null} >Select a category</option>
+                <option value="1">Funny</option>
+                <option value="2">Cohort</option>
+                <option value="3">Cartoon</option>
+                <option value="4">NSFW</option>
+                <option value="5">Meme</option>
+            </select> */}
         </div>
 
     )

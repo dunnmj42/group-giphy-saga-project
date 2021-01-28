@@ -73,7 +73,6 @@ function* setCategory(action) {
     try {
         let id = action.payload.id
         yield axios.put(`/api/favorite/${id}`, action.payload);
-        // yield put({ type: "FETCH_FAVORITES", payload: response.data });
     } catch (error) {
         console.error(error);
     }
