@@ -6,9 +6,10 @@ require('dotenv').config();
 
 router.get(`/:q`, (req, res) => {
   let query = req.params.q
+  console.log(query)
   axios
   .get(
-    `api.giphy.com/v1/gifs/search?api_key=${process.env.GIPHY_API_KEY}&q=${query}`
+    `http://api.giphy.com/v1/gifs/search?api_key=${process.env.GIPHY_API_KEY}&q=${query}&limit=25`
   )
   .then((response) => {
     res.send(response.data.data);
