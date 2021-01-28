@@ -1,16 +1,16 @@
 import {useSelector, useDispatch} from 'react-redux';
-
+import './GifItem.css'
 
 
 function GifItem() {
 
-return (
+    return (
 
-<p>
+        <p>
+            s;lkethlakjrhg
+        </p>
 
-</p>
-
-)
+    )
 
 }
 
