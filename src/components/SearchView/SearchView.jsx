@@ -1,8 +1,10 @@
+import SearchForm from '../SearchForm/SearchForm'
 
 const SearchView = () => {
 
     return (
-        <h1>SEARCH VIEW COMPONENT</h1>
+        <SearchForm />
+
     )
 }
 
