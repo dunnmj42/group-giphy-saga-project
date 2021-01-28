@@ -7,7 +7,7 @@ CREATE TABLE "favorites" (
     "url" VARCHAR (100) NOT NULL,
     "title" VARCHAR (255) NOT NULL,
     "cat_id" INT REFERENCES "category"
-)
+);
 
 -- Category table
 CREATE TABLE "category" (
