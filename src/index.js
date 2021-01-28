@@ -29,7 +29,7 @@ const favoritesList = (state = [], action) => {
 function* rootSaga() {
   yield takeEvery("SEARCH", setResults);
   yield takeEvery("FETCH_RESULTS", fetchResults);
-  yield takeEvery("NEW_FAVORITE", addFavorite);
+  yield takeEvery("NEW_FAVORITE", setFavorite);
   yield takeEvery("FETCH_FAVORITES", fetchFavorites);
 }
 
@@ -42,7 +42,7 @@ function* setResults(action) {
   } catch (error) {
     console.error(error);
   }
-}
+};
 
 function* fetchResults() {
   try {
@@ -52,7 +52,17 @@ function* fetchResults() {
   } catch (error) {
     console.error(error);
   }
-}
+};
+
+function* setFavorite(action) {
+  try {
+    const newFavorite = action.payload;
+    yield axios.post("/api/favorite", newFavorite);
+    yield put({ type: "FETCH_RESULTS" });
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 function* fetchFavorites() {
   try {
@@ -62,17 +72,7 @@ function* fetchFavorites() {
   } catch (error) {
     console.error(error);
   }
-}
-
-function* addFavorite(action) {
-  try {
-    const newFavorite = action.payload;
-    yield axios.post("/api/favorite", newFavorite);
-    yield put({ type: "FETCH_RESULTS" });
-  } catch (error) {
-    console.error(error);
-  }
-}
+};
 
 const sagaMiddleware = createSagaMiddleware();
 
