@@ -8,7 +8,6 @@ import createSagaMiddleware from "redux-saga";
 import { takeEvery, put } from "redux-saga/effects";
 import axios from "axios";
 
-
 const resultsList = (state = [], action) => {
   switch (action.type) {
     case "SET_RESULTS":
@@ -31,7 +30,7 @@ function* rootSaga() {
   yield takeEvery("SEARCH", setResults);
   yield takeEvery("NEW_FAVORITE", setFavorite);
   yield takeEvery("FETCH_FAVORITES", fetchFavorites);
-  yield takeEvery("SET_CAT", setCategory)
+  yield takeEvery("SET_CAT", setCategory);
 }
 
 function* setResults(action) {
@@ -40,14 +39,14 @@ function* setResults(action) {
     const response = yield axios.get(`/api/search/${q}`);
     console.log(response.data);
     const results = response.data.map((gif) => ({
-            title: gif.title,
-            url: gif.images.fixed_width.url
-    }))
+      title: gif.title,
+      url: gif.images.fixed_width.url,
+    }));
     yield put({ type: "SET_RESULTS", payload: results });
   } catch (error) {
     console.error(error);
   }
-};
+}
 
 function* setFavorite(action) {
   try {
@@ -57,7 +56,7 @@ function* setFavorite(action) {
   } catch (error) {
     console.error(error);
   }
-};
+}
 
 function* fetchFavorites() {
   try {
@@ -67,16 +66,16 @@ function* fetchFavorites() {
   } catch (error) {
     console.error(error);
   }
-};
+}
 
 function* setCategory(action) {
-    try {
-        let id = action.payload.id
-        yield axios.put(`/api/favorite/${id}`, action.payload);
-    } catch (error) {
-        console.error(error);
-    }
-};
+  try {
+    let id = action.payload.id;
+    yield axios.put(`/api/favorite/${id}`, action.payload);
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 const sagaMiddleware = createSagaMiddleware();
 
