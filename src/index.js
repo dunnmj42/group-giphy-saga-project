@@ -39,11 +39,8 @@ function* setResults(action) {
     const response = yield axios.get(`/api/search/${q}`);
     console.log(response.data);
     const results = response.data.map((gif) => ({
-       
             title: gif.title,
             url: gif.images.fixed_width.url
-
-        
     }))
     yield put({ type: "SET_RESULTS", payload: results });
   } catch (error) {
@@ -55,7 +52,7 @@ function* setFavorite(action) {
   try {
     const newFavorite = action.payload;
     yield axios.post("/api/favorite", newFavorite);
-    yield put({ type: "FETCH_RESULTS" });
+    yield put({ type: "FETCH_FAVORITES" });
   } catch (error) {
     console.error(error);
   }

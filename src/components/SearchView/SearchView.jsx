@@ -6,7 +6,7 @@ const SearchView = () => {
     return (
         <div>
             <SearchForm />
-            <GifList />
+            <GifList gifReducer="resultsList" />
         </div>
     )
 }

@@ -23,9 +23,14 @@ const dummyGifs = [
     }
 ]
 
-function GifList() {
+function GifList({gifReducer}) {
+    let gifArray
 
-    const gifArray = useSelector(store => store.resultsList)
+    if (gifReducer === 'resultsList') {
+        gifArray = useSelector(store => store.resultsList)
+    } else if (gifReducer === 'favoritesList') {
+        gifArray = useSelector(store => store.favoritesList)
+    }
 
     return (
         <div className="container">
