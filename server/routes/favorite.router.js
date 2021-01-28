@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
       res.send(result.rows);
     })
     .catch((error) => {
-      console.error("Error completing SELECT favorite query", error);
+      console.error("Error completing SELECT favorites query", error);
       res.sendStatus(500);
     });
 });
@@ -29,7 +29,7 @@ router.post("/", (req, res) => {
       res.sendStatus(201);
     })
     .catch((error) => {
-      console.error("Error completing INSERT favorite query", error);
+      console.error("Error completing INSERT favorites query", error);
       res.sendStatus(500);
     });
 });
