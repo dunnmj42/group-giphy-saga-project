@@ -1,9 +1,5 @@
 import React from 'react';
-
 import GifList from '../GifList/GifList.jsx';
-
-
-
 import { HashRouter as Router, Route, Link } from 'react-router-dom'
 import SearchView from '../SearchView/SearchView'
 import FavoritesView from '../FavoritesView/FavoritesView'
