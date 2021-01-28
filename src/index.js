@@ -30,6 +30,7 @@ function* rootSaga() {
   yield takeEvery("SEARCH", setResults);
   yield takeEvery("FETCH_RESULTS", fetchResults);
   yield takeEvery("NEW_FAVORITE", addFavorite);
+  yield takeEvery("FETCH_FAVORITES", fetchFavorites);
 }
 
 function* setResults(action) {
@@ -48,6 +49,16 @@ function* fetchResults() {
     const response = yield axios.get(`/api/search/`);
     console.log(response.data);
     yield put({ type: "SET_RESULTS", payload: response.data });
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+function* fetchFavorites() {
+  try {
+    const response = yield axios.get(`/api/favorite/`);
+    console.log(response.data);
+    yield put({ type: "SET_FAVORITES", payload: response.data });
   } catch (error) {
     console.error(error);
   }
