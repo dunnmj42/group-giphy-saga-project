@@ -28,7 +28,6 @@ const favoritesList = (state = [], action) => {
 
 function* rootSaga() {
   yield takeEvery("SEARCH", setResults);
-  yield takeEvery("FETCH_RESULTS", fetchResults);
   yield takeEvery("NEW_FAVORITE", setFavorite);
   yield takeEvery("FETCH_FAVORITES", fetchFavorites);
 }
@@ -37,16 +36,6 @@ function* setResults(action) {
   try {
     const q = action.payload;
     const response = yield axios.get(`/api/search/${q}`);
-    console.log(response.data);
-    yield put({ type: "SET_RESULTS", payload: response.data });
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-function* fetchResults() {
-  try {
-    const response = yield axios.get(`/api/search/`);
     console.log(response.data);
     yield put({ type: "SET_RESULTS", payload: response.data });
   } catch (error) {
