@@ -11,7 +11,7 @@ CREATE TABLE "category" (
 
 CREATE TABLE "favorites" (
     "id" SERIAL PRIMARY KEY,
-    "url" VARCHAR (100) NOT NULL,
+    "url" VARCHAR (255) NOT NULL,
     "title" VARCHAR (255) NOT NULL,
     "cat_id" INT REFERENCES "category"
 );
