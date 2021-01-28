@@ -38,7 +38,13 @@ function* setResults(action) {
     const q = action.payload;
     const response = yield axios.get(`/api/search/${q}`);
     console.log(response.data);
-    yield put({ type: "SET_RESULTS", payload: response.data });
+    const results = response.data.map((gif) => ({
+       
+            title: gif.title,
+            url: gif.url
+        
+    }))
+    yield put({ type: "SET_RESULTS", payload: results });
   } catch (error) {
     console.error(error);
   }

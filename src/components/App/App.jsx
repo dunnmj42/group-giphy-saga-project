@@ -13,10 +13,6 @@ function App(props) {
       <Route path='/home' component={SearchView} />
       <Route path='/search' component={SearchView} />
       <Route path='/favorites' component={FavoritesView} />
-      {/* <div>
-        <h1>Giphy Search!</h1>
-      </div> */}
-      <GifList />
     </Router>
   );
 }
