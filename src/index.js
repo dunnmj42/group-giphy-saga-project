@@ -7,6 +7,7 @@ import App from "./components/App/App.jsx";
 import createSagaMiddleware from "redux-saga";
 import { takeEvery, put } from "redux-saga/effects";
 import axios from "axios";
+import 'fontsource-roboto';
 
 const resultsList = (state = [], action) => {
   switch (action.type) {
