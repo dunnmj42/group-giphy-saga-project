@@ -38,7 +38,7 @@ function GifItem({ gif, favorites }) {
   }
 
   return (
-    <div className="gif-item">
+    <Card>
       <img className="gif" src={gif.url} alt={gif.title} />
       <div>
         {favorites ? (
@@ -64,7 +64,7 @@ function GifItem({ gif, favorites }) {
             </IconButton>)
         )}
       </div>
-    </div>
+    </Card>
   );
 }
 
