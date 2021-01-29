@@ -54,7 +54,7 @@ function* setResults(action) {
   }
 };
 
-
+// set new favorite gif POST
 function* setFavorite(action) {
   try {
     const newFavorite = action.payload;
@@ -65,6 +65,7 @@ function* setFavorite(action) {
   }
 };
 
+// GET for favorited gifs
 function* fetchFavorites() {
   try {
     const response = yield axios.get(`/api/favorite/`);
@@ -73,8 +74,9 @@ function* fetchFavorites() {
   } catch (error) {
     console.error(error);
   }
-}
+};
 
+// PUT to update category "cat_id" of favorited gif
 function* setCategory(action) {
   try {
     let id = action.payload.id;
@@ -82,20 +84,22 @@ function* setCategory(action) {
   } catch (error) {
     console.error(error);
   }
-}
+};
 
+// remove DELETE favorited gif from favorites table
 function* removeFavorite(action) {
   try {
     let id = action.payload.id;
     yield axios.delete(`/api/favorite/${id}`);
     yield put({ type: "FETCH_FAVORITES" });
   } catch (error) {
-    console.log("error in delete removeFavorite");
+    console.error(error);
   }
-}
+};
 
 const sagaMiddleware = createSagaMiddleware();
 
+// store declaration
 const store = createStore(
   combineReducers({
     resultsList,
