@@ -3,7 +3,6 @@ import "./GifItem.css";
 
 function GifItem({ gif, favorites }) {
   const dispatch = useDispatch();
-  console.log(gif);
 
   const addFavorite = () => {
     dispatch({ type: "NEW_FAVORITE", payload: gif });
