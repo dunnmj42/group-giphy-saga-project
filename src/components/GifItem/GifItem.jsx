@@ -20,18 +20,20 @@ function GifItem({ gif, favorites }) {
   return (
     <div className="gif-item">
       <img className="gif" src={gif.url} alt={gif.title} />
-      {favorites ? (
-        <select name="" id="" onChange={selectCat}>
-          <option value={null}>Select a category</option>
-          <option value="1">Funny</option>
-          <option value="2">Cohort</option>
-          <option value="3">Cartoon</option>
-          <option value="4">NSFW</option>
-          <option value="5">Meme</option>
-        </select>
-      ) : (
-        <button onClick={addFavorite}>Favorite</button>
-      )}
+      <div>
+        {favorites ? (
+            <select name="" id="" onChange={selectCat}>
+            <option value={null}>Select a category</option>
+            <option value="1">Funny</option>
+            <option value="2">Cohort</option>
+            <option value="3">Cartoon</option>
+            <option value="4">NSFW</option>
+            <option value="5">Meme</option>
+            </select>
+        ) : (
+            <button onClick={addFavorite}>Favorite</button>
+        )}
+      </div>
     </div>
   );
 }
