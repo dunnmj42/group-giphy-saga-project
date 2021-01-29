@@ -1,11 +1,24 @@
+import { useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import "./GifItem.css";
+import IconButton from '@material-ui/core/IconButton';
+import FavoriteIconOutline from '@material-ui/icons/FavoriteBorder';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
 
 function GifItem({ gif, favorites }) {
+
+    let [favorited, setFavorited] = useState(false)
+
   const dispatch = useDispatch();
 
   const addFavorite = () => {
     dispatch({ type: "NEW_FAVORITE", payload: gif });
+    setFavorited(true);
   };
 
   const selectCat = (event) => {
@@ -41,7 +54,14 @@ function GifItem({ gif, favorites }) {
             <button onClick={removeFavorite}>Remove Favorite</button>
             </>
         ) : (
-            <button onClick={addFavorite}>Favorite</button>
+            favorited ?
+            (<IconButton color="secondary" onClick={addFavorite}>
+                <FavoriteIcon />
+            </IconButton>)
+            :
+            (<IconButton onClick={addFavorite}>
+                <FavoriteIconOutline />
+            </IconButton>)
         )}
       </div>
     </div>
