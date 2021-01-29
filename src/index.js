@@ -32,7 +32,7 @@ function* rootSaga() {
   yield takeEvery("NEW_FAVORITE", setFavorite);
   yield takeEvery("FETCH_FAVORITES", fetchFavorites);
   yield takeEvery("SET_CAT", setCategory);
-  yield takeEvery('REMOVE_FAVORITE', removeFavorite)
+  yield takeEvery("REMOVE_FAVORITE", removeFavorite);
 }
 
 function* setResults(action) {
@@ -82,11 +82,10 @@ function* setCategory(action) {
 function* removeFavorite(action) {
   try {
     let id = action.payload.id;
-    yield axios.delete(`/api/favorite/${id}`)
-    yield put({type: 'FETCH_FAVORITES'})
+    yield axios.delete(`/api/favorite/${id}`);
+    yield put({ type: "FETCH_FAVORITES" });
   } catch (error) {
-    console.log('error in delete removeFavorite');
-    
+    console.log("error in delete removeFavorite");
   }
 }
 
