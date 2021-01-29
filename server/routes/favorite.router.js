@@ -36,7 +36,7 @@ router.post("/", (req, res) => {
 
 // update given favorite with a category id
 router.put("/:favId", (req, res) => {
-  // req.body should contain a category_id to add to this favorite image
+  // req.body contains a cat_id to add to this favorite image
   const catFavorite = req.body;
 
   const queryText = `UPDATE "favorites" SET "cat_id" = $1 WHERE id = $2`;
